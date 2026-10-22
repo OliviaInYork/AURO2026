@@ -1,31 +1,33 @@
 import rclpy
-import signal
-
 from rclpy.node import Node
-from std_msgs.msg import String
-from geometry_msgs.msg import Twist, TwistStamped
 
-class my_node(Node):
+from std_msgs.msg import String
+from nav_msgs.msg import Odometry
+
+class W1P2T9(Node):
 
     def __init__(self):
-        super().__init__('Task5_publisher')
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
-        timer_period = 1
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        super().__init__('Task9_subscriber')
 
-    def timer_callback(self):
-        msg = TwistStamped()
-        msg.twist = Twist()
-        msg.twist.angular.z = 1.0
-        self.publisher_.publish(msg)
-        self.get_logger().info(f"Publishing: '{msg}'")
+        self.subscription = self.create_subscription(
+            Odometry,
+            'odom',
+            self.odometry_callback,
+            10)
+
+        self.subscription  # prevent unused variable warning
+
+    def odometry_callback(self, msg):
+        self.get_logger().info(f'Position: {msg.pose.pose.position}\n')
 
 
 def main(args=None):
     rclpy.init(args=args)
-    node = my_node()
+
+    node = W1P2T9()
 
     try:
+        # Spin the node so the callbacks are processed.
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass

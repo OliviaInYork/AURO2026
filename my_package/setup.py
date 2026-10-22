@@ -25,7 +25,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'my_node = my_package.my_node:main'
+            'my_node = my_package.my_node:main',
+            'odom_pub = my_package.odom_pub:main',
         ],
     },
 )
