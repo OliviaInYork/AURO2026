@@ -1,0 +1,174 @@
+# Starts every .devcontainer configuration with the Dev Containers CLI (the
+# same implementation VS Code's Dev Containers extension uses) and runs a smoke
+# test inside it.
+#
+# GitHub-hosted runners have no GPU, no Windows/WSL2 and no desktop session, so
+# the `hosted` jobs fake the host side (see devcontainer-ci/host-setup.sh).
+# The `self-hosted` jobs check real hardware and only run when the repository
+# variable DEVCONTAINER_SELF_HOSTED is 'true' and matching runners exist.
+name: Dev Containers
+
+on:
+  push:
+    paths:
+      - .devcontainer/**
+      - .github/devcontainer-ci/**
+      - .github/workflows/devcontainers.yml
+  pull_request:
+    paths:
+      - .devcontainer/**
+      - .github/devcontainer-ci/**
+      - .github/workflows/devcontainers.yml
+  # The configs use :latest images, so they can break without a commit here.
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DEVCONTAINER_CLI_VERSION: 0.89.0
+
+jobs:
+  hosted:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: default (VNC)
+            config: .devcontainer/devcontainer.json
+            host: ""
+            checks: vnc
+          - name: linux-dri
+            config: .devcontainer/linux-dri/devcontainer.json
+            host: x11 dri
+            checks: host-x11 dri
+          - name: linux-nvidia (stubbed GPU)
+            config: .devcontainer/linux-nvidia/devcontainer.json
+            host: x11 dri nvidia-stub
+            checks: host-x11 dri nvidia-stub
+          - name: linux-auto (DRI host)
+            config: .devcontainer/linux-auto/devcontainer.json
+            host: x11 dri
+            checks: host-x11 auto-dri
+          - name: linux-auto (stubbed NVIDIA host)
+            config: .devcontainer/linux-auto/devcontainer.json
+            host: x11 dri nvidia-stub
+            checks: host-x11 auto-nvidia nvidia-stub
+          - name: windows-wsl (emulated WSLg)
+            config: .devcontainer/windows-wsl/devcontainer.json
+            host: wsl
+            checks: wsl
+    steps:
+      - uses: actions/checkout@v7
+
+      # The images are ~4 GB compressed; make room for them.
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install Dev Containers CLI
+        run: npm install -g "@devcontainers/cli@${DEVCONTAINER_CLI_VERSION}"
+
+      - name: Prepare host
+        run: bash .github/devcontainer-ci/host-setup.sh ${{ matrix.host }}
+
+      - name: devcontainer up
+        run: devcontainer up --workspace-folder . --config "${{ matrix.config }}"
+
+      - name: Smoke test
+        run: >
+          devcontainer exec --workspace-folder . --config "${{ matrix.config }}"
+          --remote-env "CI_EXPECT_DISPLAY=${DISPLAY:-}"
+          bash .github/devcontainer-ci/smoke-test.sh ${{ matrix.checks }}
+
+      - name: Container logs
+        if: failure()
+        run: docker ps -aq | xargs -r -n1 docker logs --tail 200
+
+  self-hosted-linux:
+    name: ${{ matrix.name }} (real GPU)
+    if: vars.DEVCONTAINER_SELF_HOSTED == 'true'
+    runs-on: [self-hosted, linux, x64, nvidia]
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-nvidia
+            config: .devcontainer/linux-nvidia/devcontainer.json
+            checks: host-x11 dri nvidia-gpu
+          - name: linux-auto
+            config: .devcontainer/linux-auto/devcontainer.json
+            checks: host-x11 auto-nvidia nvidia-gpu
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Prepare host
+        run: bash .github/devcontainer-ci/host-setup.sh x11
+
+      - name: devcontainer up
+        run: >
+          npx --yes "@devcontainers/cli@${DEVCONTAINER_CLI_VERSION}" up
+          --workspace-folder . --config "${{ matrix.config }}" --remove-existing-container
+
+      - name: Smoke test
+        run: >
+          npx --yes "@devcontainers/cli@${DEVCONTAINER_CLI_VERSION}" exec
+          --workspace-folder . --config "${{ matrix.config }}"
+          --remote-env "CI_EXPECT_DISPLAY=${DISPLAY:-}"
+          bash .github/devcontainer-ci/smoke-test.sh ${{ matrix.checks }}
+
+      - name: Remove container
+        if: always()
+        run: docker rm -f $(docker ps -aq --filter "label=devcontainer.local_folder=$PWD") || true
+
+  # Needs Windows 11 with Docker Desktop (WSL2 backend) running in the
+  # runner user's interactive session, so start the runner with run.cmd
+  # rather than as a Windows service.
+  self-hosted-windows:
+    name: windows-wsl (real WSLg)
+    if: vars.DEVCONTAINER_SELF_HOSTED == 'true'
+    runs-on: [self-hosted, windows, x64, wsl2]
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      CONFIG: .devcontainer/windows-wsl/devcontainer.json
+    steps:
+      # Uses the machine's default core.autocrlf, as a student's clone would.
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: devcontainer up
+        run: >
+          npx --yes "@devcontainers/cli@$env:DEVCONTAINER_CLI_VERSION" up
+          --workspace-folder . --config $env:CONFIG --remove-existing-container
+
+      - name: Smoke test
+        run: >
+          npx --yes "@devcontainers/cli@$env:DEVCONTAINER_CLI_VERSION" exec
+          --workspace-folder . --config $env:CONFIG
+          bash .github/devcontainer-ci/smoke-test.sh wsl wsl-gpu
+
+      - name: Remove container
+        if: always()
+        run: docker ps -aq --filter "label=devcontainer.config_file=$(Resolve-Path $env:CONFIG)" | ForEach-Object { docker rm -f $_ }

@@ -1,0 +1,64 @@
+interface IOperations {
+	cmd_vel (   msg : TwistStamped )
+}
+interface IEvents {
+	event scan : Seq( real )
+}
+robotic platform TurtleBot {
+	uses IEvents 
+	provides IOperations 
+}
+datatype Twist { 
+	linear : Vector3
+	angular : Vector3
+} 
+datatype Vector3 { 
+	x : real 
+	y : real 
+	z : real
+} 
+type Header 
+datatype TwistStamped { header : Header twist : Twist } 
+
+  
+
+
+controller Driving {
+	requires IOperations 
+	stm StateMachine {
+		const lvel : real, avel : real
+		requires IOperations 
+		state Forward {
+			entry cmd_vel ( TwistStamped (| header = default ( ) , twist = Twist (| linear = Vector3 (| x = lvel , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) |) ) ; wait ( F )
+		}
+
+		transition t0 {
+			from I to
+			Forward
+		}
+	initial I
+
+	state Turning {
+			entry cmd_vel ( TwistStamped (| header = default ( ) , twist = Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = avel |) |) |) ) ; wait ( T )
+		}
+		transition t1 {
+			from Forward
+			to Turning
+			}
+		transition t2 {
+			from Turning
+			to Forward
+			}
+		clock C
+
+		const T : nat , F : nat
+	}
+
+}
+
+module Module {
+	rref rp_ref0 = TurtleBot
+	cref ctrl_ref0 = Driving
+}
+
+function default ( ) : Header { }
