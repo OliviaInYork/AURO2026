@@ -1,0 +1,20 @@
+[1.420s] Invoking command in '/workspaces/AURO2026/week2_lab/build/week2_lab': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/workspaces/AURO2026/week2_lab/build/week2_lab/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/AURO2026/week2_lab/build/week2_lab/build --no-deps symlink_data
+[1.840s] running develop
+[2.097s] running egg_info
+[2.121s] creating week2_lab.egg-info
+[2.121s] writing week2_lab.egg-info/PKG-INFO
+[2.122s] writing dependency_links to week2_lab.egg-info/dependency_links.txt
+[2.122s] writing requirements to week2_lab.egg-info/requires.txt
+[2.122s] writing top-level names to week2_lab.egg-info/top_level.txt
+[2.122s] writing manifest file 'week2_lab.egg-info/SOURCES.txt'
+[2.178s] reading manifest file 'week2_lab.egg-info/SOURCES.txt'
+[2.179s] writing manifest file 'week2_lab.egg-info/SOURCES.txt'
+[2.210s] running build_ext
+[2.212s] Creating /workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages/week2-lab.egg-link (link to .)
+[2.212s] 
+[2.213s] Installed /workspaces/AURO2026/week2_lab/build/week2_lab
+[2.213s] running symlink_data
+[2.213s] creating /workspaces/AURO2026/week2_lab/install/week2_lab/share/ament_index/resource_index/packages
+[2.213s] symbolically linking /workspaces/AURO2026/week2_lab/build/week2_lab/resource/week2_lab -> /workspaces/AURO2026/week2_lab/install/week2_lab/share/ament_index/resource_index/packages
+[2.213s] symbolically linking /workspaces/AURO2026/week2_lab/build/week2_lab/package.xml -> /workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab
+[2.239s] Invoked command in '/workspaces/AURO2026/week2_lab/build/week2_lab' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/workspaces/AURO2026/week2_lab/build/week2_lab/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/AURO2026/week2_lab/build/week2_lab/build --no-deps symlink_data

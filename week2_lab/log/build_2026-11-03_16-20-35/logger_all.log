@@ -1,0 +1,93 @@
+[-1793722833230669824.000s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[-1793722833230669824.000s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7d520e9b8190>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7d520e93b4d0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7d520e93b4d0>>, mixin_verb=('build',))
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[-1793722833230669824.000s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/workspaces/AURO2026/week2_lab'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_python' and name 'week2_lab'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_args' from command line to 'None'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_target' from command line to 'None'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_clean_cache' from command line to 'False'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_clean_first' from command line to 'False'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'cmake_force_configure' from command line to 'False'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'ament_cmake_args' from command line to 'None'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'catkin_cmake_args' from command line to 'None'
+[-1793722833230669824.000s] Level 5:colcon.colcon_core.verb:set package 'week2_lab' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.verb:Building package 'week2_lab' with the following arguments: {'ament_cmake_args': None, 'build_base': '/workspaces/AURO2026/week2_lab/build/week2_lab', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/workspaces/AURO2026/week2_lab/install/week2_lab', 'merge_install': False, 'path': '/workspaces/AURO2026/week2_lab', 'symlink_install': True, 'test_result_base': None}
+[-1793722833230669824.000s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[-1793722833230669824.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[-1793722833230669824.000s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/workspaces/AURO2026/week2_lab' with build type 'ament_python'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('week2_lab', 'ament_prefix_path')
+[-1793722833230669824.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/ament_prefix_path.ps1'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/ament_prefix_path.dsv'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/ament_prefix_path.sh'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1793722833230669824.000s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/workspaces/AURO2026/week2_lab'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: rotate, build, bdist_dumb, build_ext, install_data, bdist_egg, setopt, bdist, build_py, symlink_data, sdist, clean, extract_messages, update_catalog, bdist_rpm, check, develop, egg_info, dist_info, compile_catalog, alias, install_egg_info, easy_install, install_scripts, editable_wheel, bdist_wheel, install_lib, saveopts, install_headers, build_clib, init_catalog, build_scripts, install
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools 'develop' options: --dry-run, --quiet, --always-unzip, --multi-version, --install-layout, --no-user-cfg, --zip-ok, --local-snapshots-ok, --verbose, --help, --record, --no-deps, --editable, --optimize, --site-dirs, --always-copy, --build-directory, --allow-hosts, --uninstall, --install-dir, --egg-path, --exclude-scripts, --prefix, --version, --user, --no-find-links, --upgrade, --force-installation-into-system-dir, --index-url, --script-dir, --find-links
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/workspaces/AURO2026/week2_lab/build/week2_lab': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/workspaces/AURO2026/week2_lab/build/week2_lab/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/AURO2026/week2_lab/build/week2_lab/build --no-deps symlink_data
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('week2_lab', 'pythonpath_develop')
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/build/week2_lab/share/week2_lab/hook/pythonpath_develop.ps1'
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/workspaces/AURO2026/week2_lab/build/week2_lab' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/workspaces/AURO2026/week2_lab/build/week2_lab/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/AURO2026/week2_lab/build/week2_lab/build --no-deps symlink_data
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/workspaces/AURO2026/week2_lab/build/week2_lab/share/week2_lab/hook/pythonpath_develop.dsv'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/build/week2_lab/share/week2_lab/hook/pythonpath_develop.sh'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab' for CMake module files
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab' for CMake config files
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab/lib'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab/bin'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab/lib/pkgconfig/week2_lab.pc'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('week2_lab', 'pythonpath')
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/pythonpath.ps1'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/pythonpath.dsv'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/hook/pythonpath.sh'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:checking '/workspaces/AURO2026/week2_lab/install/week2_lab/bin'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(week2_lab)
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating package script '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/package.ps1'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/package.dsv'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating package script '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/package.sh'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating package script '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/package.bash'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating package script '/workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab/package.zsh'
+[-1793722833230669824.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/workspaces/AURO2026/week2_lab/install/week2_lab/share/colcon-core/packages/week2_lab)
+[-1793722833230669824.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[-1793722833230669824.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[-1793722833230669824.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[-1793722833230669824.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[-1793722833230669824.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[-1793722833230669824.000s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[-1793722833230669824.000s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[-1793722833230669824.000s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/workspaces/AURO2026/week2_lab/install/local_setup.ps1'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/workspaces/AURO2026/week2_lab/install/_local_setup_util_ps1.py'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/workspaces/AURO2026/week2_lab/install/setup.ps1'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/workspaces/AURO2026/week2_lab/install/local_setup.sh'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/workspaces/AURO2026/week2_lab/install/_local_setup_util_sh.py'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/workspaces/AURO2026/week2_lab/install/setup.sh'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/workspaces/AURO2026/week2_lab/install/local_setup.bash'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/workspaces/AURO2026/week2_lab/install/setup.bash'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/workspaces/AURO2026/week2_lab/install/local_setup.zsh'
+[-1793722833230669824.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/workspaces/AURO2026/week2_lab/install/setup.zsh'

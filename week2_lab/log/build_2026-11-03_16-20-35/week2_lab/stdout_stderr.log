@@ -1,0 +1,18 @@
+running develop
+running egg_info
+creating week2_lab.egg-info
+writing week2_lab.egg-info/PKG-INFO
+writing dependency_links to week2_lab.egg-info/dependency_links.txt
+writing requirements to week2_lab.egg-info/requires.txt
+writing top-level names to week2_lab.egg-info/top_level.txt
+writing manifest file 'week2_lab.egg-info/SOURCES.txt'
+reading manifest file 'week2_lab.egg-info/SOURCES.txt'
+writing manifest file 'week2_lab.egg-info/SOURCES.txt'
+running build_ext
+Creating /workspaces/AURO2026/week2_lab/install/week2_lab/lib/python3.14/site-packages/week2-lab.egg-link (link to .)
+
+Installed /workspaces/AURO2026/week2_lab/build/week2_lab
+running symlink_data
+creating /workspaces/AURO2026/week2_lab/install/week2_lab/share/ament_index/resource_index/packages
+symbolically linking /workspaces/AURO2026/week2_lab/build/week2_lab/resource/week2_lab -> /workspaces/AURO2026/week2_lab/install/week2_lab/share/ament_index/resource_index/packages
+symbolically linking /workspaces/AURO2026/week2_lab/build/week2_lab/package.xml -> /workspaces/AURO2026/week2_lab/install/week2_lab/share/week2_lab

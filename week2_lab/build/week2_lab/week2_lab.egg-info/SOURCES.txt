@@ -1,0 +1,12 @@
+package.xml
+setup.cfg
+setup.py
+resource/week2_lab
+week2_lab/__init__.py
+week2_lab/py.typed
+week2_lab.egg-info/PKG-INFO
+week2_lab.egg-info/SOURCES.txt
+week2_lab.egg-info/dependency_links.txt
+week2_lab.egg-info/requires.txt
+week2_lab.egg-info/top_level.txt
+week2_lab.egg-info/zip-safe
